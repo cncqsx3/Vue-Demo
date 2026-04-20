@@ -39,14 +39,7 @@ export function SitePageLayout({ site }: SitePageLayoutProps) {
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [activeTab, setActiveTab] = useState("browser")
 
-  useEffect(() => {
-    if (initialUrl) {
-      handleProxy(decodeURIComponent(initialUrl))
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  const handleProxy = (targetUrl?: string) => {
+  function handleProxy(targetUrl?: string) {
     const urlToProxy = targetUrl || url
     if (!urlToProxy.trim()) return
 
@@ -62,6 +55,16 @@ export function SitePageLayout({ site }: SitePageLayoutProps) {
     setUrl(fullUrl)
     setTimeout(() => setIsLoading(false), 300)
   }
+
+  useEffect(() => {
+    if (initialUrl) {
+      const timer = window.setTimeout(() => {
+        handleProxy(decodeURIComponent(initialUrl))
+      }, 0)
+      return () => window.clearTimeout(timer)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const copyProxyUrl = async () => {
     if (!proxyUrl) return

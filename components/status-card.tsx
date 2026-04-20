@@ -49,7 +49,11 @@ export function StatusCard({ site }: StatusCardProps) {
   }
 
   useEffect(() => {
-    checkStatus()
+    const timer = window.setTimeout(() => {
+      void checkStatus()
+    }, 0)
+
+    return () => window.clearTimeout(timer)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
