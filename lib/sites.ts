@@ -1,4 +1,4 @@
-export type IconName = "box" | "github" | "brain" | "message-circle" | "trophy"
+export type IconName = "box" | "github" | "brain" | "message-circle" | "trophy" | "search"
 
 export interface SiteConfig {
   id: string
@@ -86,6 +86,21 @@ export const sites: SiteConfig[] = [
       "https://lmarena.ai",
       "https://lmarena.ai/leaderboard",
       "https://lmarena.ai/chat",
+    ],
+  },
+  {
+    id: "bing",
+    name: "Bing",
+    nameCn: "必应",
+    domain: "bing.com",
+    iconName: "search",
+    color: "from-sky-500 to-blue-700",
+    description: "Microsoft search engine",
+    descriptionCn: "微软搜索引擎",
+    examples: [
+      "https://www.bing.com",
+      "https://www.bing.com/search?q=hello",
+      "https://cn.bing.com",
     ],
   },
 ]

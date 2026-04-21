@@ -6,6 +6,7 @@ import {
   Brain,
   MessageCircle,
   Trophy,
+  Search,
 } from "lucide-react"
 import type { IconName } from "@/lib/sites"
 
@@ -15,6 +16,7 @@ const iconMap = {
   brain: Brain,
   "message-circle": MessageCircle,
   trophy: Trophy,
+  search: Search,
 }
 
 interface SiteIconProps {

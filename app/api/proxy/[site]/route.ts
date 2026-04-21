@@ -8,6 +8,15 @@ const domainMappings: Record<string, string[]> = {
   huggingface: ["huggingface.co", "cdn-lfs.huggingface.co"],
   poe: ["poe.com"],
   lmarena: ["lmarena.ai", "arena.lmsys.org"],
+  bing: [
+    "bing.com",
+    "www.bing.com",
+    "cn.bing.com",
+    "www2.bing.com",
+    "th.bing.com",
+    "r.bing.com",
+    "business.bing.com",
+  ],
 }
 
 function rewriteUrls(html: string, siteId: string, baseUrl: string): string {

@@ -81,7 +81,8 @@ export function SitePageLayout({ site }: SitePageLayoutProps) {
   }
 
   const handleQuickLink = (exampleUrl: string) => {
-    setUrl(exampleUrl)
+    // Proxy UI (iframe) lives under the "browser" tab; stay on "examples" and it looks like nothing happens.
+    setActiveTab("browser")
     handleProxy(exampleUrl)
   }
 
