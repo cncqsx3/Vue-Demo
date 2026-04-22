@@ -1,0 +1,23 @@
+# Render Blueprint — https://render.com/docs/blueprint-spec
+#
+# - Connect this repo in the Render Dashboard to apply the blueprint.
+# - `npm ci` requires a committed package-lock.json; otherwise use:
+#   buildCommand: npm install && npm run build
+# - Add `branch: <name>` under the service if you deploy from a non-default branch.
+
+services:
+  - type: web
+    name: proxyhub
+    runtime: node
+    region: oregon
+    plan: starter
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_TELEMETRY_DISABLED
+        value: "1"
