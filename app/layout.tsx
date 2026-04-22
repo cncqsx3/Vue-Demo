@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/theme-provider"
 import { AppSidebar } from "@/components/app-sidebar"
 import { MobileHeader } from "@/components/mobile-header"
+import { AuthOverlay } from "@/components/auth"
 import "./globals.css"
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist-sans" })
@@ -41,6 +42,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const passwordFromEnv = process.env.PAGE_PASSWORD
+
   return (
     <html
       lang="zh-CN"
@@ -54,13 +57,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="min-h-screen">
-            <AppSidebar />
-            <MobileHeader />
-            <main className="lg:pl-64 pt-14 lg:pt-0 min-h-screen">
-              {children}
-            </main>
-          </div>
+          <AuthOverlay passwordFromEnv={passwordFromEnv}>
+            <div className="min-h-screen">
+              <AppSidebar />
+              <MobileHeader />
+              <main className="lg:pl-64 pt-14 lg:pt-0 min-h-screen">
+                {children}
+              </main>
+            </div>
+          </AuthOverlay>
         </ThemeProvider>
         {process.env.NODE_ENV === "production" && <Analytics />}
       </body>

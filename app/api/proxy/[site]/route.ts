@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse } from "next/server"
 import { sites } from "@/lib/sites"
 
+export const dynamic = "force-static"
+
+export async function generateStaticParams() {
+  return sites.map((site) => ({ site: site.id }))
+}
+
 // Domain mappings for URL rewriting
 const domainMappings: Record<string, string[]> = {
   docker: ["hub.docker.com", "registry.hub.docker.com"],
