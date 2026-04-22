@@ -5,6 +5,10 @@ __v0_jsx-dev-runtime.ts
 .snowflake/
 .v0-trash/
 .vercel/
+# Build output
+out/
+
+next-env.d.ts
 next.user-config.*
 
 # Environment variables
